@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<student>
+    <name>Tarunkumar</name>
+    <age>22</age>
+    <department>Computer Science</department>
+    <email>tarun.kumar@example.com</email>
+</student>
