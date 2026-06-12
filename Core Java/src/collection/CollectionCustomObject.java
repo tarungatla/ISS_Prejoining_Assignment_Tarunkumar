@@ -2,10 +2,8 @@ package collection;
 
 import java.util.*;
 
-/**
- * Student custom object.
- */
-class Student {
+
+class Student implements Comparable<Student> {
 
     private int id;
     private String name;
@@ -23,24 +21,24 @@ class Student {
         return name;
     }
 
+    // Comparable -> Sort by ID
     @Override
-    public String toString() {
-        return "Student{id="
-                + id +
-                ", name='"
-                + name +
-                "'}";
+    public int compareTo(Student other) {
+        return Integer.compare(this.id, other.id);
     }
 
-    // Required for Set uniqueness
+    @Override
+    public String toString() {
+        return "Student{id=" + id + ", name='" + name + "'}";
+    }
+
     @Override
     public boolean equals(Object obj) {
 
-        if(this == obj)
+        if (this == obj)
             return true;
 
-        if(obj == null ||
-                getClass() != obj.getClass())
+        if (obj == null || getClass() != obj.getClass())
             return false;
 
         Student student = (Student) obj;
@@ -54,15 +52,38 @@ class Student {
     }
 }
 
-public class CollectionCustomObject{
+class StudentNameComparator implements Comparator<Student> {
+
+    @Override
+    public int compare(Student s1, Student s2) {
+        return s1.getName().compareTo(s2.getName());
+    }
+}
+
+public class CollectionCustomObject {
 
     public static void main(String[] args) {
 
-        Student s1 = new Student(101, "Tarun");
-        Student s2 = new Student(102, "Rahul");
-        Student s3 = new Student(103, "Amit");
+        // Primitive List
 
-        // LIST<Student>
+        List<Integer> numbers =
+                new ArrayList<>(Arrays.asList(50, 10, 40, 20, 30));
+
+        System.out.println("Original Integer List:");
+        System.out.println(numbers);
+
+        Collections.sort(numbers);
+
+        System.out.println("\nSorted Integer List:");
+        System.out.println(numbers);
+
+        // Student Objects
+
+        Student s1 = new Student(103, "Tarun");
+        Student s2 = new Student(101, "Rahul");
+        Student s3 = new Student(102, "Amit");
+
+        // List<Student>
 
         List<Student> studentList =
                 new ArrayList<>();
@@ -71,13 +92,36 @@ public class CollectionCustomObject{
         studentList.add(s2);
         studentList.add(s3);
 
-        System.out.println("List<Student>");
+        System.out.println("\nOriginal Student List:");
 
-        for(Student student : studentList) {
+        for (Student student : studentList) {
             System.out.println(student);
         }
 
-        // SET<Student>
+        // Sort using Comparable (ID)
+
+        Collections.sort(studentList);
+
+        System.out.println("\nStudents Sorted By ID (Comparable):");
+
+        for (Student student : studentList) {
+            System.out.println(student);
+        }
+
+        // Sort using Comparator (Name)
+
+        Collections.sort(
+                studentList,
+                new StudentNameComparator()
+        );
+
+        System.out.println("\nStudents Sorted By Name (Comparator):");
+
+        for (Student student : studentList) {
+            System.out.println(student);
+        }
+
+        // Set<Student>
 
         Set<Student> studentSet =
                 new HashSet<>();
@@ -88,11 +132,11 @@ public class CollectionCustomObject{
 
         System.out.println("\nSet<Student>");
 
-        for(Student student : studentSet) {
+        for (Student student : studentSet) {
             System.out.println(student);
         }
 
-        // MAP<Integer, Student>
+        // Map<Integer, Student>
 
         Map<Integer, Student> studentMap =
                 new HashMap<>();
@@ -103,10 +147,8 @@ public class CollectionCustomObject{
 
         System.out.println("\nMap<Integer, Student>");
 
-        for(Integer id : studentMap.keySet()) {
-            System.out.println(
-                    id + " -> "
-                    + studentMap.get(id));
+        for (Integer id : studentMap.keySet()) {
+            System.out.println(id + " -> " + studentMap.get(id));
         }
     }
 }
