@@ -1,0 +1,89 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #f2f2f2;
+}
+
+.container {
+	display: flex;
+	justify-content: center;
+	padding: 40px;
+}
+
+.card {
+	display: flex;
+	background: white;
+	border-radius: 10px;
+	box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+	overflow: hidden;
+	width:70%;
+}
+
+.image-box {
+	flex: 1;
+	background: #f0f8ff;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.image-box img{
+	width: 80%;
+	height: auto;
+	padding: 20px
+}
+
+.form-box {
+	flex: 1;
+	padding: 30px;
+}
+
+h2 {
+	margin-top: 0;
+	margin-bottom: 20px;
+	font-size: 24px;
+	color: #333;
+}
+
+form {
+	display: flex;
+	flex-direction: column;
+}
+
+label {
+	margin-bottom: 6px;
+	font-weight: 500;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+input[type="checkbox"]{
+	margin-right:6px;
+}
+
+button {
+  padding: 12px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  font-weight: 600;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.note {
+  margin-top: 15px;
+  font-size: 14px;
+}
