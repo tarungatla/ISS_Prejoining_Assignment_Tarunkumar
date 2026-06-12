@@ -8,7 +8,6 @@ A simple full-stack web application built with **Java Servlets**, **JSP**, and *
 - [Tech Stack](#tech-stack)
 - [Project Structure](#project-structure)
 - [Prerequisites](#prerequisites)
-- [Setup & Deployment](#setup--deployment)
 - [Usage](#usage)
 - [Screenshots](#screenshots)
 
